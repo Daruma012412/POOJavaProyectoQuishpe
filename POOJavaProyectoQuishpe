@@ -1,0 +1,99 @@
+package com.kevin.proyecto.dashboard;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ * Clase principal que representa el Dashboard del proyecto.
+ * Permite al usuario interactuar con el sistema a través de un menú en consola.
+ * 
+ * @author Kevin
+ */
+public class Dashboard {
+
+    private List<String> tareas; // Lista de tareas ficticias
+    private Scanner scanner;
+
+    /**
+     * Constructor que inicializa las tareas y el escáner.
+     */
+    public Dashboard() {
+        tareas = new ArrayList<>();
+        scanner = new Scanner(System.in);
+    }
+
+    /**
+     * Muestra el menú principal del sistema y maneja la interacción del usuario.
+     */
+    public void mostrarMenu() {
+        System.out.println("==== Bienvenido al Proyecto de POO - Kevin Quishpe ====");
+
+        int opcion;
+        do {
+            System.out.println("\n--- Menú Principal ---");
+            System.out.println("1. Registrar Tarea");
+            System.out.println("2. Mostrar Tareas");
+            System.out.println("3. Estado del Proyecto");
+            System.out.println("0. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar buffer
+
+            switch (opcion) {
+                case 1 -> registrarTarea();
+                case 2 -> mostrarTareas();
+                case 3 -> estadoProyecto();
+                case 0 -> System.out.println("Saliendo... ¡Gracias por usar el sistema!");
+                default -> System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        } while (opcion != 0);
+    }
+
+    /**
+     * Registra una tarea simulada en la lista.
+     */
+    private void registrarTarea() {
+        System.out.print("Ingrese el nombre de la tarea: ");
+        String tarea = scanner.nextLine();
+        tareas.add(tarea);
+        System.out.println("✅ Tarea registrada con éxito.");
+    }
+
+    /**
+     * Muestra todas las tareas registradas.
+     */
+    private void mostrarTareas() {
+        if (tareas.isEmpty()) {
+            System.out.println("❌ No hay tareas registradas.");
+        } else {
+            System.out.println("📋 Tareas registradas:");
+            for (int i = 0; i < tareas.size(); i++) {
+                System.out.println((i + 1) + ". " + tareas.get(i));
+            }
+        }
+    }
+
+    /**
+     * Muestra el estado general del proyecto.
+     */
+    private void estadoProyecto() {
+        System.out.println("🚀 Proyecto en desarrollo...");
+        System.out.println("Número de tareas registradas: " + tareas.size());
+    }
+}
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+
+/**
+ *
+ * @author PC
+ */
+public class POOJavaProyectoQuishpe {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}
